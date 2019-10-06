@@ -10,6 +10,7 @@ function iniciar(){
 	buffer = document.createElement('canvas');
 
 	tablero = new Tablero();
+	figura = new Figura('O');
 
 	run();
 }
@@ -20,6 +21,7 @@ function run(){
 	contextoBuffer = buffer.getContext("2d");
 
 	tablero.pintar(contextoBuffer);
+	figura.pintar(contextoBuffer);
 
 	contexto.clearRect(0,0,canvas.width,canvas.height);
 	contexto.drawImage(buffer, 0, 0);
@@ -31,11 +33,11 @@ function capturaTeclado(event){
 	if(event.which==38 || event.which==87)
 		console.log("arriba");
 	if(event.which==40 || event.which==83)
-		console.log("abajo");
+		figura.mover_abajo();
 	if(event.which==39 || event.which==68)
-		console.log("derecha");
+		figura.mover_derecha();
 	if(event.which==37 || event.which==65)
-		console.log("izquierda");
+		figura.mover_izquierda();
 	
 }
 
